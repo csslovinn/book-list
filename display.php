@@ -1,7 +1,7 @@
 <?php
 
 require("data.php");
-
+//writes data to table, defines form and table structure
 function table($items, $list, $cart) {
 	$table = "<form id='select-book' method='post' action='index.php'>\n\t<table border='1' class='table'>\n\t\t<tr><th></th><th>Title</th><th>Author</th><th>Price</th></tr>\n"; 
 	for($i=0;$i<count($items);$i++){
@@ -11,6 +11,7 @@ function table($items, $list, $cart) {
 	return $table;
 }	
 
+//creates csv of selected books
 function getBooks($submitted) {
 if(isset($submitted)) {
 	return implode("," , $submitted);
@@ -19,6 +20,7 @@ if(isset($submitted)) {
 }
 }
 
+//checks if form has been submitted, gets key values of selected books, shows view cart button when apropriate
 if(isset($_POST['book'])){
     $bookList = getbooks($_POST['book']);
 	$cart = "cart-button";
@@ -26,8 +28,11 @@ if(isset($_POST['book'])){
    $bookList = getbooks(null); 
    $cart = "hidden-button";
 }
+
+//displays table
 echo table($books, $bookList, $cart);
 
+//writes selected items to list
 function displayCart($listValue, $array) {
 	$inCart = explode (',', $listValue);
 	$cartList = "<ol>";
@@ -38,9 +43,10 @@ function displayCart($listValue, $array) {
 	return $cartList;
 }
 
+//checks if form has been submiited and displays list of selected items
 /*if (isset($_POST('view-cart'))) {
 	$cartView = displayCart($bookList, $books);
 } else {
-		$cartView = displayCart(null);
+	$cartView = displayCart(null);
 }*/
 ?>
