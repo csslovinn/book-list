@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.table {max-width: 700px;}
+.hidden-button {display:none;}
+.cart-button {display:inline-block;}
+#show-cart {margin:25px 0 0 0;}
